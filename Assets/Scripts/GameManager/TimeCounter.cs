@@ -13,15 +13,18 @@ public class TimeCounter : MonoBehaviour
         return timeUp(maxMin);
     }
 
-    private bool timeUp(float max)
+    private void Update()
     {
         time += Time.deltaTime;
+    }
+
+    private bool timeUp(float max)
+    {
         if (time >= max)
         {
             time = 0;
             return true;
         }
-
         return false;
     }
 }

@@ -12,7 +12,7 @@ public class EnemySpawnig : MonoBehaviour
     public GameObject[] Enemy1;
     private GameObject gameManager;
     public Transform PlayerPosition;
-
+    public TimeCounter timeCounter;
     private void Start()
     {
         gameManager = GameObject.Find("GameManager");
@@ -82,7 +82,7 @@ public class EnemySpawnig : MonoBehaviour
     {
         Time2 += Time.deltaTime * 0.5f;
         time += Time.deltaTime;
-        if (gameManager.GetComponent<TimeCounter>().timeHandler(0.1f))
+        if (timeCounter.timeHandler(0.1f))
         {
             playerProperties(Time2);
             Vector2 position = new Vector2(PlayerPosition.position.x + xPoz, PlayerPosition.position.y + yPoz);

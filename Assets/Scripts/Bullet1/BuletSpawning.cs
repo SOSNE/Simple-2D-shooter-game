@@ -14,6 +14,7 @@ public class BuletSpawning : MonoBehaviour
     public static float time, fierRateStatic = 0.2f;
     public static int bulletMultiplierStatic = 1;
     public Transform playerPosition;
+    public TimeCounter timeCounter;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class BuletSpawning : MonoBehaviour
         time += Time.deltaTime; 
         if (Input.GetMouseButton(0))
         {
-            if (gameObject.GetComponent<TimeCounter>().timeHandler(fierRateStatic))
+            if (timeCounter.timeHandler(fierRateStatic))
             {
                 for (int i = 0; i < bulletMultiplierStatic ; i++)
                 {
@@ -39,7 +40,9 @@ public class BuletSpawning : MonoBehaviour
                     CreatedBullet.transform.position = transform.position;
                     CreatedBullet.GetComponent<BuletScript>().BulletRotation = 0;
                     CreatedBullet.GetComponent<BuletScript>().BulletRotation += startRotation+(15 * i);
+                    
                     CreatedBullet.SetActive(true);
+                    CinemachineShake.Instance.CameraShake(1, 0.08f);
                 }
             }
         }

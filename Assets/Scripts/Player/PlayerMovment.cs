@@ -8,8 +8,12 @@ public class PlayerMovment : MonoBehaviour
 {
     public float speed;
     private Vector2 _movment;
-    
+    private Rigidbody2D rb;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
         _movment.x = Input.GetAxis("Horizontal");
@@ -18,6 +22,6 @@ public class PlayerMovment : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + _movment * (speed * Time.fixedDeltaTime));
+        rb.velocity = _movment * speed;
     }
 }
