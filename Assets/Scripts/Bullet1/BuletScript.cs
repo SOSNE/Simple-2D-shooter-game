@@ -38,7 +38,7 @@ public class BuletScript : MonoBehaviour
     void Update()
     {
         
-        GetComponent<Rigidbody2D>().velocity =  PathCorrection(velocity) * BuletSpeed;
+        
         transform.up = PathCorrection(velocity);
 
         Vector2 LenghtFromPlayer = new Vector2(PlayerPosition.position.x - transform.position.x,
@@ -51,7 +51,11 @@ public class BuletScript : MonoBehaviour
         }
     }
 
-    
+    private void FixedUpdate()
+    {
+        GetComponent<Rigidbody2D>().velocity =  PathCorrection(velocity) * BuletSpeed;
+    }
+
     //homing logic
     Vector2 PathCorrection(Vector2 velocityVector)
     {

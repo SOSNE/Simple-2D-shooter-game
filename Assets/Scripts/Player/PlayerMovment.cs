@@ -10,11 +10,11 @@ public class PlayerMovment : MonoBehaviour
     private Vector2 _movment;
     private Rigidbody2D rb;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    void Update()
+    private void Update()
     {
         _movment.x = Input.GetAxis("Horizontal");
         _movment.y = Input.GetAxis("Vertical");

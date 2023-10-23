@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,7 +8,7 @@ public class EemyMovment : MonoBehaviour
 {
     private Transform PlayerPosition;
     public Vector2 directionToPlayer;
-    public float Speed;
+    public float speed;
     
     private void Awake()
     {
@@ -24,6 +25,11 @@ public class EemyMovment : MonoBehaviour
         
         transform.up = directionToPlayer;
         
-        GetComponent<Rigidbody2D>().velocity = directionToPlayer * Speed;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        GetComponent<Rigidbody2D>().velocity = directionToPlayer * speed;
     }
 }
